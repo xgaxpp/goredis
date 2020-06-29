@@ -3,6 +3,6 @@ module goredis
 go 1.14
 
 require (
-	github.com/cpuguy83/go-md2man/v2 v2.0.0 // indirect
-	github.com/urfave/cli v1.22.4
+	github.com/go-redis/redis v6.15.8+incompatible
+	github.com/onsi/ginkgo v1.13.0 // indirect
 )

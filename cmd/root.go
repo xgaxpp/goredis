@@ -12,6 +12,7 @@ import (
 func init() {
 
 }
+
 // Execute 启动进程
 func Execute(host string, port uint) {
 	for {
@@ -27,16 +28,17 @@ func Execute(host string, port uint) {
 		if commod == "exit" || commod == "quit" {
 			return
 		}
-		InitCli(analysisCmd(input))
+		resolvingCmd(cmdArray(input))
 	}
 }
-// 解析命令行
-func analysisCmd(input string) []string {
+
+// 拆分命令行
+func cmdArray(input string) []string {
 	// 去掉收尾空格
 	input = strings.TrimSpace(input)
 	// 去掉无用空格
 	input = deleteExtraSpace(input)
-    // 根据空格分组
+	// 根据空格分组
 	cmds := strings.Split(input, " ")
 	// 返回结果
 	return cmds
@@ -52,7 +54,7 @@ func analysisCmd(input string) []string {
 */
 func deleteExtraSpace(s string) string {
 	//删除字符串中的多余空格，有多个空格时，仅保留一个空格
-	s1 := strings.Replace(s, "	", " ", -1)    //替换tab为空格
+	s1 := strings.Replace(s, "	", " ", -1)       //替换tab为空格
 	regstr := "\\s{2,}"                          //两个及两个以上空格的正则表达式
 	reg, _ := regexp.Compile(regstr)             //编译正则表达式
 	s2 := make([]byte, len(s1))                  //定义字符数组切片
